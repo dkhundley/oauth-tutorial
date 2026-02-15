@@ -1,1 +1,2 @@
-
+# OAuth Tutorial
+Hi all! I'm a machine learning engineer, and while my expertise is in AI/ML, security is always top of mind. When AI agents and agentic tools, many platforms are now leveraging **OAuth** as a security measure. I have personally found understanding this topic to be very confusing, even more so than many AI/ML concepts. In conjunction with a YouTube stream, I hope to shed light on this topic, both at an intuitive, conceptual level and applying our knowledge with code. In terms of the code, we will be demonstrating how to leverage OAuth with **Amazon Web Services (AWS) Cognito** as well as **Microsoft Azure Entra ID**.
