@@ -1,3 +1,4 @@
+# Setting the overarching Terraform block
 terraform {
   required_version = ">= 1.6.0"
 
@@ -9,6 +10,7 @@ terraform {
   }
 }
 
+# Setting the AWS provider
 provider "aws" {
   region = var.aws_region
 }
