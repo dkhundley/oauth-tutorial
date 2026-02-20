@@ -112,7 +112,39 @@ When a client application interacts with an issuer, we receive back an identity 
 ## AWS Cognito
 In this section, we'll walk through the general steps of how you can set up OAuth 2.0 with **AWS Cognito**. Because user interfaces constantly change, I'm not going to provide any screenshots and instead will provide a text-based guide. I would also encourage you watch [my YouTube livestream here](https://www.youtube.com/live/kizaSAQ-7vg?si=i1qwp9k200KAooLY) if you want to see me go through these steps in video form. I would also encourage you reference [AWS's official Cognito documentation](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html) for additional guidance.
 
+1. Go to the AWS Cognito service.
+2. Go to create a new user pool.
+3. On the "Create a new user pool" form, be sure to select "Machine-to-Machine application".
+4. After submitting the form, the user pool will be created with 1 default client app and 1 default resource server.
+5. In the left nav, go to "Branding -> Domain". Make note of the Cognito domain at the top. Please note that in order to effectively call this, you will also need to append `/oauth2/token/` to the end of this domain.
+6. On this same "Domain" page, you'll see the resource servers. Be sure to make note of the "resource server identifier".
+7. Edit the default resource server by adding any additional desired scopes. By default, you will see a `read` scope. To continue following along with this tutorial, you will need to add an additional `write` scope.
+8. In the left nav, go to "Applications -> App clients"
+9. Select the default app client entry that was created when we first created the user pool.
+10. Make note of both the client ID and client secret.
+11. Go to "Login pages" and click the "Edit" button.
+12. Add the new `write` scope toward the bottom of this form and click "Save changes".
+13. Take the Cognito domain (step 5), Cognito resource server ID (step 6), Cognito client ID (step 10), and Cognito client secret (step 10) and populate them into the sample notebook I have provided in `/notebooks/aws_cognito.ipynb`.
+14. Run all the notebook cells to see Cognito's OAuth in action!
+
 
 
 ## Azure Entra ID
 In this section, we'll walk through the general steps of how you can set up OAuth 2.0 with **Azure Entra ID**. Because user interfaces constantly change, I'm not going to provide any screenshots and instead will provide a text-based guide. I would also encourage you watch [my YouTube livestream here](https://www.youtube.com/live/kizaSAQ-7vg?si=i1qwp9k200KAooLY) if you want to see me go through these steps in video form. I would also encourage you reference [Azure's official Entra ID documentation](https://learn.microsoft.com/en-us/entra/identity/) for additional guidance.
+
+1. Go to Microsoft Entra ID then "App Registrations" and click the "New registration button".
+2. Fill out the name for your sample API. (Doesn't matter what it is.) Leave the redirect URI blank. Click the "register" button and make note of the tenant ID.
+3. Go to "Manage" -> "Expose an API"
+4. Activate the application ID URI and make note of this.
+5. Go to "Manage" -> "App roles"
+6. Click "+ Create app role" and create a read app role. Do this again to write a write app role. Be sure to select "Applications" under "Allowed member types", and also be sure that "Do you want to enable this app role?" is selected.
+7. Return to "App Registrations" and we'll create our client app registration. (See steps 1 and 2.) Make note of the client ID.
+8. Go to "Manage" -> "API permissions".
+9. Click the "Grant admin consent for Default Directory" button.
+10. Select "+ Add a permission"
+11. Find the original app registration created by step 1 under "APIs my organization uses."
+12. Go to "Manage" -> "Certificates and Secrets." Generate a new client secret here.
+13. In the top search bar, search for "Enterprise Applications" and find your client app in here.
+14. Go to "Security" -> "Permissions" and click the "Grant Admin Access for Default Directory" button.
+15. Capture the tenant ID (step 2), application ID URI (step 4), client ID (step 7), client secret (step 12) and populate them as part of the sample notebook I created under `/notebooks/azure_entra_id.ipynb`.
+16. Run all the notebook cells to see Entra ID's OAuth in action!
