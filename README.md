@@ -13,6 +13,8 @@ To help you understand how to get the most value out of this tutorial, this sect
 2. **Grounding our understanding of authentication vs. authorization with an analogy**: Because these concepts can be confusing to understand, we'll ground our knowledge using an analogy: staying at a hotel. Please navigate to the "Hotel Analogy" section in this README to learn more.
 3. **Understanding OAuth 2.0's history**: You will find that OAuth 2.0 adopts some specific terminology, which I personally found confusing until I understood the history behind OAuth 2.0. In this same README, you can read a brief history about how OAuth 2.0 came to be.
 4. **Understanding OAuth 2.0's discovery endpoint and JWT standard claims**: There are two respective sections in this README that talk about the OAuth 2.0's discovery endpoint and JWT standard claims. Please review these as it will help to give you a more conceptual understanding of how OAuth 2.0 works.
+5. **Setting up OAuth 2.0 with AWS Cognito**: If you would like to continue setting up OAuth 2.0 with AWS Cognito, please see the respective section in this README on the steps for doing that. I have also included Terraform for building this same infrastructure within `/terraform/aws/` of this repo.
+6. **Setting up OAuth 2.0 with Azure Entra ID**: If you would like to continue setting up OAuth 2.0 with Azure Entra ID, please see the respective section in this README on the steps for doing that. I have also included Terraform for building this same infrastructure within `/terraform/azure/` of this repo.
 
 
 
@@ -76,7 +78,7 @@ When learning about different things such as Bedrock AgentCore, I found some ter
     - OIDC added identity tokens manifesting as **JSON web tokens (JWTs)**. It also introduced standards around discovery endpoints and standard claims associated to the identity JWTs.
 
 
-## OAuth's Discovery Endpoint
+## OAuth 2.0's Discovery Endpoint
 OAuth's discovery endpoint provides standards around how clients should interact with an OAuth issuing body. These include the following:
 
 - Every issuer must expose an endpoint that follows this same URL format: `https://your-issuer-domain/.well-known/openid-configuration`
@@ -96,7 +98,7 @@ OAuth's discovery endpoint provides standards around how clients should interact
 
 
 
-## OAuth Standard Claims
+## OAuth 2.0 Standard Claims
 When a client application interacts with an issuer, we receive back an identity token in the form of JWT. As part of this JWT, there are a number of standard claims associated to the JWT. You can certainly add more claims than the standard ones, but the core ID token claims inclue the following:
 
 - `iss`: Stands for "issuer" and defines who issued the token
@@ -104,3 +106,13 @@ When a client application interacts with an issuer, we receive back an identity 
 - `aud`: Stands for "audience" and represents who the token is intended for
 - `exp`: Stands for "expiration time" and naturally represents when a token expires
 - `iat`: Stands for "Issued at time" and represents when a token was originally issued
+
+
+
+## AWS Cognito
+In this section, we'll walk through the general steps of how you can set up OAuth 2.0 with **AWS Cognito**. Because user interfaces constantly change, I'm not going to provide any screenshots and instead will provide a text-based guide. I would also encourage you watch [my YouTube livestream here](https://www.youtube.com/live/kizaSAQ-7vg?si=i1qwp9k200KAooLY) if you want to see me go through these steps in video form. I would also encourage you reference [AWS's official Cognito documentation](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html) for additional guidance.
+
+
+
+## Azure Entra ID
+In this section, we'll walk through the general steps of how you can set up OAuth 2.0 with **Azure Entra ID**. Because user interfaces constantly change, I'm not going to provide any screenshots and instead will provide a text-based guide. I would also encourage you watch [my YouTube livestream here](https://www.youtube.com/live/kizaSAQ-7vg?si=i1qwp9k200KAooLY) if you want to see me go through these steps in video form. I would also encourage you reference [Azure's official Entra ID documentation](https://learn.microsoft.com/en-us/entra/identity/) for additional guidance.
